@@ -988,7 +988,7 @@ par1
 par2
 para-
 pará
-pará (2)
+pará
 parabeno
 parabién
 parábola
@@ -2801,7 +2801,7 @@ perdigana
 perdigar
 perdigón1
 perdigón2
-perdigón (3)
+perdigón
 perdigonada
 perdigonazo
 perdigonera
