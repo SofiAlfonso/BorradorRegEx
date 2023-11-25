@@ -45,19 +45,18 @@ def diccionario(caracter):
         lineas = abrir.readlines()
         for linea in lineas:
             dividir = re.search(',', linea)
-            if  dividir:
-                palabra = linea.split(',')
-                palabra2 = palabra[0][:len(palabra[0]) - 2] + palabra[1].lstrip().strip() #Creo las palabras que van en masculino y femenino por aparte
-                num = re.search("[0-9]", palabra[0]) #Busco y elimino números dentro de las palabras
+            if dividir:
+                num= re.search("[0-9]", linea)
                 if num != None:
-                    palabra[0] = palabra[0].replace(num[0], '', 1)
-                num1 = re.search("[0-9]", palabra2)
-                if num1 != None:
-                    palabra2 = palabra2.replace(num1[0], '', 1)
+                    linea = linea.replace(num[0], '')
+                palabra = linea.split(',')
+                palabra[0]=palabra[0].replace("-",'').strip()
+                palabra2 = palabra[0][:len(palabra[0]) - 2] + palabra[1].replace("-",'').strip().lstrip() #Creo las palabras que van en masculino y femenino por aparte
+
                 palabras.append(palabra[0])
                 palabras.append(palabra2)
             else:
-                palabra = linea.strip()
+                palabra = linea.replace("-",'').strip()
                 num=re.search("[0-9]",palabra)
                 if num!=None:
                     palabra=palabra.replace(num[0], '',1)
@@ -77,6 +76,7 @@ def diccionario(caracter):
             patron=palabras[a]
         else:
             patron= patron +"|" + palabras[a]
+    print(patron)
     return patron
 
 #Muestra en pantalla la imagén correspondiente a los emogis ingresados
